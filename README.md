@@ -1,8 +1,11 @@
 # Go Microservices Tutorial
 A shipping container management platform using Go for Microservices using the following tutorial: https://ewanvalentine.io/microservices-in-golang-part-1/?fbclid=IwAR1jS_32UIDe10cRRVO28J7oB4Meh1KKeB2bgskWMfL6aEqlwOWwpkoD1dQ
 
-*Part #1 - Introducing protobuf and gRPC*
+*Part #1 - Introducing protobuf and gRPC*  
 https://ewanvalentine.io/microservices-in-golang-part-1/?fbclid=IwAR1jS_32UIDe10cRRVO28J7oB4Meh1KKeB2bgskWMfL6aEqlwOWwpkoD1dQ
+
+*Part #2 - Docker and go-micro*
+https://ewanvalentine.io/microservices-in-golang-part-2/?fbclid=IwAR1jS_32UIDe10cRRVO28J7oB4Meh1KKeB2bgskWMfL6aEqlwOWwpkoD1dQ
 
 ## Tech and Libraries
 go-micro: Go microservice library.  
