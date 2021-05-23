@@ -6,7 +6,8 @@ import (
 
 	// This is the generated protobuf code
 	pb "github.com/buzzology/go-microservices-tutorial/shippy-service-consignment/proto/consignment"
-	"github.com/micro/go-micro/v2"
+	vesselPb "github.com/buzzology/go-microservices-tutorial/shippy-service-vessel/proto/vessel"
+	micro "github.com/micro/go-micro/v2"
 )
 
 type repository interface {
@@ -36,10 +37,24 @@ func (repo *Repository) GetAll() []*pb.Consignment {
 
 type consignmentService struct {
 	repo repository
+	vesselClient vesselPb.VesselService
 }
 
 // Create consignment - method on the service
 func (s *consignmentService) CreateConsignment(ctx context.Context, req *pb.Consignment, res *pb.Response) error {
+
+	// Check the vessel service with our params to see if there's one avaiable
+	vesselResponse, err := s.vesselClient.FindAvailable(context.Background(), &vesselPb.Specification{
+		MaxWeight: req.Weight,
+		Capacity: int32(len(req.Containers)),
+	})
+
+	if err != nil {
+		return err
+	}
+
+	// We've got a vessel so we associate it with the consignment
+	req.VesselId = vesselResponse.Vessel.Id
 
 	// Save consignment
 	consignment, err := s.repo.Create(req)
@@ -76,9 +91,10 @@ func main() {
 	)
 
 	service.Init()
+	vesselClient := vesselPb.NewVesselService("shippy.service.vessel", service.Client())
 
 	// Register service - instantiating err and checking in one line
-	if err := pb.RegisterShippingServiceHandler(service.Server(), &consignmentService{repo}); err != nil {
+	if err := pb.RegisterShippingServiceHandler(service.Server(), &consignmentService{repo, vesselClient}); err != nil {
 		log.Panic(err)
 	}
 
