@@ -2,8 +2,7 @@ module github.com/buzzology/go-microservices-tutorial/shippy-cli-assignment
 
 go 1.16
 
-//replace github.com/buzzology/go-microservices-tutorial/shippy-service-consignment => ../shippy-service-consignment
-
+replace github.com/buzzology/go-microservices-tutorial/shippy-service-consignment => ../shippy-service-consignment
 replace google.golang.org/grpc v1.38.0 => google.golang.org/grpc v1.26.0
 
 require (
