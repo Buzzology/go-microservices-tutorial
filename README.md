@@ -18,13 +18,19 @@ Managing packages: https://developers.google.com/protocol-buffers/docs/reference
 `go get github.com/golang/protobuf/protoc-gen-go@v1.3`   
 
 ### Docker
+
+#### Consignment Service
 Build docker image: `docker build -t shippy-service-consignment .`  
 Run the docker image: `docker run -p 50051:50051 shippy-service-consignment` 
+
+### Cli assignment
+Build docker image (from root): `docker build -t shippy-cli-consignment -f ./shippy-cli-assignment/Dockerfile  .`
 
 ### Go-Micro
 - Dependencies
   - `go get github.com/micro/micro/v2`  
   - `go get github.com/micro/micro/v2/cmd/protoc-gen-micro@master`  
+- Generating protos: `protoc --proto_path=. --go_out=. --micro_out=. proto/consignment/consignment.proto`
 - Port should be set using the `MICRO_SERVER_ADDRESS` environment variable.
 
 #### Futher reading
