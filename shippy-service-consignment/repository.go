@@ -77,6 +77,16 @@ func UnmarshalConsignment(consignment *Consignment) *pb.Consignment {
 }
 
 
+func UnmarshConsignmentCollection(consignments []*Consignment) []*pb.Consignment {
+	collection := make([]*pb.Consignment, 0)
+	for _, consignment := range consignments {
+		collection = append(collection, UnmarshalConsignment(consignment))
+	}
+
+	return collection
+}
+
+
 func UnmarshalContainer(container *Container) *pb.Container {
 	return &pb.Container {
 		Id: container.ID,

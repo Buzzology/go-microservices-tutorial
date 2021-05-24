@@ -41,3 +41,15 @@ func (s *handler) CreateConsignment(ctx context.Context, req *pb.Consignment, re
 	res.Consignment = req
 	return nil
 }
+
+
+func(s *handler) GetConsignments(ctx context.Context, req *pb.GetRequest, res *pb.Response) error {
+
+	consignments, err := s.repository.GetAll(ctx)
+	if err != nil {
+		return err
+	}
+
+	res.Consignments = UnmarshConsignmentCollection(consignments)
+	return nil
+}

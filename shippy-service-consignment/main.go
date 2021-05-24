@@ -25,7 +25,7 @@ func main() {
 
 	service.Init()
 
-	uri := os.GetEnv("DB_HOST")
+	uri := os.Getenv("DB_HOST")
 	if uri == "" {
 		uri = defaultHost
 	}
