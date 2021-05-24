@@ -2,10 +2,13 @@
 A shipping container management platform using Go for Microservices using the following tutorial: https://ewanvalentine.io/microservices-in-golang-part-1/?fbclid=IwAR1jS_32UIDe10cRRVO28J7oB4Meh1KKeB2bgskWMfL6aEqlwOWwpkoD1dQ
 
 *Part #1 - Introducing protobuf and gRPC*  
-https://ewanvalentine.io/microservices-in-golang-part-1/?fbclid=IwAR1jS_32UIDe10cRRVO28J7oB4Meh1KKeB2bgskWMfL6aEqlwOWwpkoD1dQ
+https://ewanvalentine.io/microservices-in-golang-part-1
 
 *Part #2 - Docker and go-micro*
-https://ewanvalentine.io/microservices-in-golang-part-2/?fbclid=IwAR1jS_32UIDe10cRRVO28J7oB4Meh1KKeB2bgskWMfL6aEqlwOWwpkoD1dQ
+https://ewanvalentine.io/microservices-in-golang-part-2
+
+*Part #3 - Docker compose and datastores*  
+https://ewanvalentine.io/microservices-in-golang-part-3/
 
 ## Tech and Libraries
 
@@ -23,8 +26,8 @@ Managing packages: https://developers.google.com/protocol-buffers/docs/reference
 Build docker image: `docker build -t shippy-service-consignment .`  
 Run the docker image: `docker run -p 50051:50051 shippy-service-consignment` 
 
-### Cli assignment
-Build docker image (from root): `docker build -t shippy-cli-consignment -f ./shippy-cli-assignment/Dockerfile  .`
+### Cli consignment
+Build docker image (from root): `docker build -t shippy-cli-consignment -f ./shippy-cli-consignment/Dockerfile  .`
 
 ### Go-Micro
 - Dependencies
@@ -33,10 +36,15 @@ Build docker image (from root): `docker build -t shippy-cli-consignment -f ./shi
 - Generating protos: `protoc --proto_path=. --go_out=. --micro_out=. proto/consignment/consignment.proto`
 - Port should be set using the `MICRO_SERVER_ADDRESS` environment variable.
 
+### Docker compose
+- Build: `docker-compose build`
+- Run: `docker-compose up`
+
 #### Futher reading
 - Consul or etcd  
 
 ## Futher reading
 gRPC: https://blog.gopheracademy.com/advent-2017/go-grpc-beyond-basics/  
+Organising Code Bases: https://rakyll.org/style-packages/   
 
 
