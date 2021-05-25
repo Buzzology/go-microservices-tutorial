@@ -40,11 +40,13 @@ Build docker image (from root): `docker build -t shippy-cli-consignment -f ./shi
 - Build: `docker-compose build`
 - Run: `docker-compose up`
 
-#### Futher reading
+#### To research
 - Consul or etcd  
 
 ## Futher reading
 gRPC: https://blog.gopheracademy.com/advent-2017/go-grpc-beyond-basics/  
 Organising Code Bases: https://rakyll.org/style-packages/   
+Multiple workspaces in VSCode: https://code.visualstudio.com/docs/editor/multi-root-workspaces  
+
 
 
