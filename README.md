@@ -10,6 +10,15 @@ https://ewanvalentine.io/microservices-in-golang-part-2
 *Part #3 - Docker compose and datastores*  
 https://ewanvalentine.io/microservices-in-golang-part-3/
 
+## Setup
+- Clone the following repositories:
+  - https://github.com/Buzzology/shippy-service-consignment
+  - https://github.com/Buzzology/shippy-service-vessel
+  - https://github.com/Buzzology/shippy-cli-consignment
+  - https://github.com/Buzzology/go-microservices-tutorial
+- Open a terminal in the go-microservices-tutorial directory
+- Run `docker-compose up`
+
 ## Tech and Libraries
 
 ### Protobuffs
@@ -24,6 +33,7 @@ Managing packages: https://developers.google.com/protocol-buffers/docs/reference
 
 #### Consignment Service
 Build docker image: `docker build -t shippy-service-consignment .`  
+Build docker image (debug): `docker build -t shippy-service-consignment . --no-cache=true --progress=plain`  
 Run the docker image: `docker run -p 50051:50051 shippy-service-consignment` 
 
 ### Cli consignment

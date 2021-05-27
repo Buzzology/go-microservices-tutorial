@@ -1,7 +1,7 @@
 services:
     consignment:
         restart: always
-        build: ./shippy-service-consignment
+        build: ../shippy-service-consignment
         depends_on:
             - datastore
             - vessel
@@ -13,7 +13,9 @@ services:
 
     vessel:
         restart: always
-        build: ./shippy-service-vessel
+        build: ../shippy-service-vessel
+        depends_on:
+            - datastore
         ports:
             - 50052:50051
         environment:
@@ -21,7 +23,11 @@ services:
             DB_HOST: "mongodb://datastore:27017"
 
     cli:
-        build: ./shippy-cli-consignment
+        build: ../shippy-cli-consignment
+        depends_on:
+            - datastore
+            - vessel
+            - consignment
 
     datastore:
         image: mongo
@@ -32,5 +38,5 @@ services:
         volumes:
             - ./data/db:/data/db
         ports:
-            - 27017
+            - 27017:27017
         command: mongod --logpath=/dev/null
